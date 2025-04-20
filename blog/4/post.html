@@ -298,7 +298,8 @@ protected void InitializeUnitData()
 
     foreach (UnitData.UnitAttribute attribute in unitData.data)
     {
-        if (!DataMappings.TryGetValue(attribute.dataType, out Action&lt;object&gt; setter))
+        if (!DataMappings.TryGetValue(attribute.dataType,
+            out Action&lt;object&gt; setter))
         {
             Debug.LogError($"{attribute.dataType} does not have a mapping, " +
                             "please add one in DataMappings");
@@ -329,8 +330,10 @@ protected void InitializeUnitData()
         { DataType.RangedAttackCooldown, value =>
             ((ArcherAIComponent)AIComponent).attackCooldown = (float)value },
         { DataType.RangedAttackKnockback, value => Knockback = (float)value },
-        { DataType.RangedAttackAccuracy, value => RangedAttackAccuracy = (int)value },
-        { DataType.RangedAttackSpread, value => RangedAttackSpread = (int)value },
+        { DataType.RangedAttackAccuracy, value =>
+            RangedAttackAccuracy = (int)value },
+        { DataType.RangedAttackSpread, value =>
+            RangedAttackSpread = (int)value },
         ...
     };
 }</code></pre>
