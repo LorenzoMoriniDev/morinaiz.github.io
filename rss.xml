@@ -5,7 +5,7 @@
     <link>https://lorenzomorini.dev</link>
     <description>My blog, I post about Game Dev, Procedural Generation, Shaders and more</description>
     <language>en-us</language>
-    <lastBuildDate>Mon, 21 Jul 2025 14:39:14 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 07 Nov 2025 19:24:25 GMT</lastBuildDate>
     <image>
       <url>https://lorenzomorini.dev/data/favicon.png</url>
       <title>Lorenzo Morini's Blog favicon</title>
@@ -42,6 +42,14 @@
   <guid>https://lorenzomorini.dev/blog/4/post.html</guid>
   <pubDate>Thu, 06 Mar 2025 00:00:00 GMT</pubDate>
   <description>Efficient data management for the units in my RTS</description>
+</item>
+
+<item>
+  <title>Introducing My New Free Online Teleprompter ("Gobbo")</title>
+  <link>https://lorenzomorini.dev/blog/5/post.html</link>
+  <guid>https://lorenzomorini.dev/blog/5/post.html</guid>
+  <pubDate>Thu, 06 Mar 2025 00:00:00 GMT</pubDate>
+  <description>A free online teleprompter built to solve specific production needs for video lessons.</description>
 </item>
 
   </channel>
