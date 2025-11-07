@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A free online teleprompter built to solve specific production needs for video lessons.">
+    <link rel="icon" href="../../data/favicon.png" type="image/png">
+    <meta property="og:image" content="./teleprompter-cover.webp">
+    <title>Introducing My New Free Online Teleprompter ("Gobbo")</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/cascadia-mono" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../style-code.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <header>
+        <h1>Introducing My New Free Online Teleprompter</h1>
+        <h2>Why I Built My Own "Gobbo"</h2>
+        <section class="light-icon-box">
+            <a id="home-button" href="../../blog.html" class="icon" target="_blank" rel="noopener noreferrer">
+                <img src="../../data/home-icon.svg" alt="Home" />
+            </a>
+            <a href="https://www.upwork.com/freelancers/~01067b5eb71db874ad" class="icon" target="_blank" rel="noopener noreferrer">
+                <img src="../../data/upwork-icon.svg" alt="Upwork" />
+            </a>
+            <a href="#" onclick="event.preventDefault()" id="shareButton" class="icon" target="_blank" rel="noopener noreferrer">
+                <img src="../../data/share-icon.svg" alt="Share" />
+            </a>
+            <script src="../../parameters-behaviour.js"></script>
+        </section>
+        <p class="post-date">2025-03-06</p>
+    </header>
+
+    <div class="left-text-box">
+        <h2>The Setting: Why I Needed a Teleprompter</h2>
+        <p>
+            Hi! This post is all about my new free online <strong>teleprompter</strong> (or, as we say in Italian, "<strong>gobbo</strong>").
+        </p>
+        <p>
+            I decided to start this project during one of my jobs, as I had to produce about 60 hours of video lessons. Since I needed to be professional, I decided to start using a teleprompter. An online one, of course, as I didn't want to spend money on a physical one.
+        </p>
+        <p>
+            However, I didn't really like the free ones I could find online. I had some very specific needs, which no single teleprompter could really suit, mostly related to the duration of the text and the possibility to go back without stopping.
+        </p>
+        <p>
+            So, I decided to do my own version.
+        </p>
+    </div>
+
+    <img src="cover.webp" alt="My Free Online Teleprompter" class="image">
+ 
+    <div class="left-text-box">
+        <h2>The Problem: My Specific Needs</h2>
+        <p>
+            When I started my search, I had a clear list of non-negotiable features:
+        </p>
+        <ul>
+            <li>
+                Precise Timing: Every prompt had to be exactly 15 minutes.
+            </li>
+            <li>
+                Easy Corrections: I wanted to be able to go back in case I mispronounced something, without stopping the prompter.
+            </li>
+            <li>
+                Clear Pacing: I wanted to have a clear indication of the words per minute (WPM).
+            </li>
+        </ul>
+        <p>
+            Surprisingly, there was no prompter online with all three of these features. Some allowed you to pick your own WPM, some allowed you to choose the duration, or to go back, but there was none with all three. This was crazy to me because once I started using a teleprompter, it was immediately obvious that I needed to do all of these things.
+        </p>
+        <p>
+            This gap was the final push I needed to make my own version.
+        </p>
+    </div>
+
+    <div class="left-text-box">
+        <h2>The Features: Building My Perfect Teleprompter</h2>
+        <p>
+            I made a list of all the features I wanted, splitting them into "must-haves" and "nice-to-haves."
+        </p>
+        <h3>Must-Have Features:</h3>
+        <ul>
+            <li>Pacing Control: Decide pacing through WPM or Total Duration.</li>
+            <li>Readability: Adjustable Font Size and text Alignment.</li>
+            <li>Full Freedom: The ability to stop anytime, and go back or forth instantly.</li>
+            <li>Productivity: An option to restart from where I left off.</li>
+            <li>Clarity: A clean, easy-to-read font.</li>
+        </ul>
+        
+        <h3>Nice-to-Have Features:</h3>
+        <ul>
+            <li>Themes (Nord, Monokai, Darcula, etc.)</li>
+            <li>A simple Black and White high-contrast mode.</li>
+            <li>Mirror mode (for physical teleprompter rigs).</li>
+            <li>A text preview before starting.</li>
+        </ul>
+    </div>
+
+    <div class="left-text-box">
+        <h2>The Build: Tech, Design, and Deployment</h2>
+        <p>
+            I got to work. I built it simply with <strong>HTML, CSS, and JavaScript</strong>, as I thought I could easily put it online somewhere.
+        </p>
+        <p>
+            To be fair, there isn't much to say about the development process. I took a lot of care in making sure that it was well-polished, but other than that, it was pretty straightforward.
+        </p>
+        <p>
+            The only real design choices I took were about the font and the visibility of the commands:
+        </p>
+        <ol>
+            <li>
+                Font: I decided to go with <strong>Atkinson Hyperlegible</strong> for the font, as it's specifically designed for readability and was really nice to work with.
+            </li>
+            <li>
+                Controls: I implemented a YouTube-like system for the commands. They disappear if the prompter is active and the cursor is either absent or hasn't moved for 3 seconds, keeping the screen clean.
+            </li>
+        </ol>
+        <p>
+            After 2 days of work, I managed to finish it.
+        </p>
+        <p>
+            After finishing the programming, I bought a domain for it on <strong>Porkbun</strong> (it seemed like a good registrar, and I didn't want to use Namecheap again). I then linked the domain to my GitHub repository using <strong>GitHub Pages</strong>.
+        </p>
+    </div>
+
+    <h3>Custom themes</h3>
+    <img src="CustomThemes.png" alt="Teleprompter settings and UI" class="image">
+ 
+    <h3>Teleprompter in Action</h3>
+    <img src="TeleprompterInAction.png" alt="Teleprompter text scrolling" class="image">
+    
+    <div class="left-text-box"> 
+        <p>
+            I also created a simple icon for the project. It's just the letters "TP" (for Teleprompter), styled to look like lines of text from a black and white teleprompter script. I put it together in about 30 minutes using Figma.
+        </p>
+    </div>
+    
+    <h3>Favicon</h3>
+    <img src="Favicon.png" alt="Teleprompter Icon" class="image">
+
+    <div class="left-text-box">
+        <h2>Try It Out!</h2>
+        <p>
+            Here it is:
+        </p>
+        <p>
+            <a href="https://teleprompter.free/" target="_blank" rel="noopener noreferrer">https://teleprompter.free/</a>
+        </p>
+        <p>
+            I was also very surprised that this domain was actually available. I thought such a good, SEO-friendly domain would have been taken already, but apparently not!
+        </p>
+    </div>
+
+    <div class="left-text-box">
+        <h2>Conclusion</h2>
+        <p>
+            I plan to add a few features in the future, such as mobile support, but for now, it's been working very well for my use case, so I am already very satisfied with it.
+        </p>
+        <p>
+            Hope you enjoyed this article! If you did, check out my other 
+            <a href="https://lorenzomorini.dev/blog.html" target="_blank">blog posts</a>
+        </p>
+    </div>
+</body>
+</html>

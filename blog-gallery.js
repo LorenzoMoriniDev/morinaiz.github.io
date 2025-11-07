@@ -2,7 +2,7 @@ let overlayOpen = false;
 
 document.addEventListener("DOMContentLoaded", function () {
     const gallery = document.getElementById("blog-gallery");
-    let currentBlogPostIndex = 4;
+    let currentBlogPostIndex = 5;
 
     function setupColumn() {
         gallery.innerHTML = '';
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function setupAndLoadPosts() {
-        let column = setupColumn(); 
+        let column = setupColumn();
         loadNextBlogPost(currentBlogPostIndex, column);
     }
 
