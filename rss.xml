@@ -5,7 +5,7 @@
     <link>https://lorenzomorini.dev</link>
     <description>My blog, I post about Game Dev, Procedural Generation, Shaders and more</description>
     <language>en-us</language>
-    <lastBuildDate>Fri, 07 Nov 2025 19:38:07 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 07 Nov 2025 20:30:35 GMT</lastBuildDate>
     <image>
       <url>https://lorenzomorini.dev/data/favicon.png</url>
       <title>Lorenzo Morini's Blog favicon</title>
@@ -45,10 +45,10 @@
 </item>
 
 <item>
-  <title>Introducing My New Free Online Teleprompter ("Gobbo")</title>
+  <title>Free Online Teleprompter</title>
   <link>https://lorenzomorini.dev/blog/5/post.html</link>
   <guid>https://lorenzomorini.dev/blog/5/post.html</guid>
-  <pubDate>Thu, 06 Mar 2025 00:00:00 GMT</pubDate>
+  <pubDate>Fri, 07 Nov 2025 00:00:00 GMT</pubDate>
   <description>A free online teleprompter built to solve specific production needs for video lessons.</description>
 </item>
 
