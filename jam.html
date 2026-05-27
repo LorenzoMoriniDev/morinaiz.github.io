@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<!--
+  ██████████████████████████████████████████████████████████
+  █                                                        █
+  █   COSA FAI                                             █
+  █                                                        █
+  █   LA JAM NON E' ANCORA PRONTA                          █
+  █                                                        █
+  █   MALEDETTO/A                                          █
+  █                                                        █
+  █   ASPETTA 15 MINUTI                                    █
+  █                                                        █
+  █   PREMI F12                                            █
+  █                                                        █
+  ██████████████████████████████████████████████████████████
+-->
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Jam - Open Data Italiani</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Nord Colors */
+    --bg: #2e3440;
+    --surface: #3b4252;
+    --surface2: #434c5e;
+    --border: #4c566a;
+    --text: #eceff4;
+    --muted: #d8dee9;
+    --muted2: #4c566a;
+    --accent: #88c0d0;
+    --accent-dim: #81a1c1;
+    --green: #a3be8c;
+    --yellow: #ebcb8b;
+    --sans: 'IBM Plex Sans', sans-serif;
+
+    /* Material 3 Variables */
+    --m3-radius-sm: 8px;
+    --m3-radius-md: 12px;
+    --m3-radius-lg: 16px;
+    --m3-radius-xl: 28px;
+    --m3-elevation-1: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 17px; 
+    line-height: 1.5;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---- COUNTDOWN ---- */
+  #countdown-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  #countdown-screen .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+  }
+
+  #countdown-screen h1 {
+    font-size: clamp(24px, 5vw, 40px);
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4rem;
+  }
+
+  .cd-timer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .cd-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .cd-num {
+    font-size: clamp(48px, 10vw, 80px);
+    font-weight: 700;
+    color: var(--text);
+    background: var(--surface2);
+    border: none;
+    border-radius: var(--m3-radius-lg);
+    min-width: 120px;
+    padding: 24px 16px;
+    text-align: center;
+    line-height: 1;
+  }
+
+  .cd-sep {
+    font-size: clamp(48px, 10vw, 80px);
+    font-weight: 700;
+    color: var(--muted2);
+    padding-bottom: 32px;
+  }
+
+  .cd-label {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ---- JAM PAGE ---- */
+  #jam-content { display: none; }
+
+  .page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  /* header */
+  .jam-header {
+    margin-bottom: 3rem;
+    padding: 2.5rem;
+    background: var(--surface);
+    border-radius: var(--m3-radius-xl);
+  }
+
+  .jam-header .eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .jam-header h1 {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .jam-header .meta {
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* sections */
+  .section {
+    margin-bottom: 3.5rem;
+  }
+
+  .section-label {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-dim);
+    border-bottom: 1px solid var(--border);
+    display: block;
+    padding-bottom: 8px;
+    margin-bottom: 1.5rem;
+  }
+
+  /* theme */
+  .theme-block {
+    background: var(--surface2);
+    border-radius: var(--m3-radius-lg);
+    padding: 1.5rem 2rem;
+    text-align: center;
+  }
+
+  .theme-block p:first-child {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .theme-block p:last-child {
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  /* rules */
+  h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 2rem 0 12px;
+  }
+
+  h3:first-child { margin-top: 0; }
+
+  p, li {
+    color: var(--muted);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  ul, ol {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  li { margin-bottom: 8px; }
+
+  strong {
+    color: var(--text);
+    font-weight: 700;
+  }
+
+  code {
+    font-size: 14px;
+    background: var(--surface2);
+    border-radius: var(--m3-radius-sm);
+    padding: 2px 8px;
+    color: var(--green);
+  }
+
+  a {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  /* timeline table */
+  .schedule {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--surface);
+    border-radius: var(--m3-radius-lg);
+    overflow: hidden;
+  }
+
+  .schedule tr td {
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .schedule tr:last-child td { 
+    border-bottom: none; 
+  }
+
+  .schedule td {
+    padding: 16px 20px;
+    color: var(--muted);
+    vertical-align: middle;
+  }
+
+  .schedule td:first-child {
+    font-weight: 400; 
+    color: var(--accent);
+    width: 90px;
+    padding-right: 24px;
+    white-space: nowrap;
+  }
+
+  .schedule tr.highlight td { color: var(--text); }
+  .schedule tr.highlight td:first-child { color: var(--accent); }
+
+  /* voting */
+  .voting-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+
+  .vote-card {
+    border: 1px solid var(--border);
+    background: transparent; 
+    border-radius: var(--m3-radius-lg);
+    padding: 20px 24px;
+  }
+
+  .vote-card strong {
+    display: block;
+    font-size: 17px;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .vote-card span {
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .prize {
+    padding: 20px 24px;
+    background: var(--surface);
+    border-radius: var(--m3-radius-lg);
+    border: 2px solid var(--yellow);
+    color: var(--text);
+    box-shadow: var(--m3-elevation-1);
+    display: flex;
+    align-items: center;
+  }
+
+  .prize strong { 
+    color: var(--yellow); 
+    margin-left: 6px;
+  }
+
+  /* footer */
+  .jam-footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    color: var(--accent-dim);
+    text-align: center;
+    background: var(--surface);
+    border-radius: var(--m3-radius-xl);
+    padding: 16px;
+  }
+
+  @media (max-width: 600px) {
+    .voting-grid { grid-template-columns: 1fr; }
+    .cd-num { min-width: 80px; padding: 16px 12px; }
+    .page { padding: 2rem 1rem 4rem; }
+    .jam-header { padding: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div id="countdown-screen">
+  <p class="eyebrow">La jam inizia il 27 maggio 2026</p>
+  <h1>// La jam non è ancora aperta</h1>
+  <div class="cd-timer">
+    <div class="cd-unit">
+      <div class="cd-num" id="cd-h">00</div>
+      <div class="cd-label">ore</div>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit">
+      <div class="cd-num" id="cd-m">00</div>
+      <div class="cd-label">min</div>
+    </div>
+    <div class="cd-sep">:</div>
+    <div class="cd-unit">
+      <div class="cd-num" id="cd-s">00</div>
+      <div class="cd-label">sec</div>
+    </div>
+  </div>
+</div>
+
+<div id="jam-content">
+  <div class="page">
+
+    <header class="jam-header">
+      <span class="eyebrow">Data Jam - 27 maggio 2026</span>
+      <h1>Open Data Italiani</h1>
+      <p class="meta">La jam è aperta.<br>Si svolge dalle 09:30 alle 17:00.<br>Le submission chiudono alle 17:00 in punto.</p>
+    </header>
+
+    <section class="section">
+      <div class="section-label">Tema</div>
+      <div class="theme-block">
+        <p>Open Data Italiani</p>
+        <p>Sta a voi interpretare il tema. Avrete la possibilità di spiegare la vostra interpretazione al momento della submission.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Regole</div>
+
+      <h3>Team</h3>
+      <p>Potete lavorare da soli o in team fino a 6 persone.</p>
+
+      <h3>Dataset</h3>
+      <p>Il vostro dataset deve essere <strong>bloccato entro le 10:30</strong>. Nessun cambio dopo quell'ora.</p>
+
+      <h3>Submission</h3>
+      <p>Dovete inviare un <strong>repository GitHub</strong> contenente:</p>
+      <ul>
+        <li>Un Jupyter notebook con la vostra analisi completa</li>
+        <li>Un <code>README.md</code> che spiega quale domanda vi siete posti e cosa avete trovato</li>
+        <li>Almeno una visualizzazione</li>
+        <li>Almeno un modello ML (clustering, regressione, classificazione - a vostra scelta)</li>
+      </ul>
+
+      <h3>Repository</h3>
+      <ul>
+        <li>Il repo deve essere <strong>committato e pushato entro le 17:00</strong>. Nessun aggiornamento dopo la scadenza.</li>
+        <li>Il repo deve essere pubblico.</li>
+        <li>Il repo deve essere condiviso sul server Discord, nella sezione "test".</li>
+      </ul>
+
+      <h3>Strumenti e Dati</h3>
+      <ul>
+        <li>Potete usare qualsiasi libreria del corso: pandas, numpy, matplotlib, seaborn, MySQL, sklearn, ecc.</li>
+        <li>Potete usare altro codice e librerie preesistenti.</li>
+        <li>NON potete usare l'AI per generare codice.</li>
+        <li>Potete usare l'AI per fare domande.</li>
+        <li>Potete usare qualsiasi dataset italiano pubblicamente disponibile. Fonti suggerite:
+          <ul>
+            <li><a href="https://www.istat.it/it/" target="_blank">ISTAT</a> - popolazione, occupazione, criminalità, salute</li>
+            <li><a href="https://www.dati.gov.it/" target="_blank">dati.gov.it</a> - portale nazionale dei dati aperti</li>
+            <li><a href="https://ourworldindata.org/" target="_blank">Our World in Data</a> - dataset globali. Sono presenti anche dataset italiani</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Programma</div>
+      <table class="schedule">
+        <tr class="highlight">
+          <td>09:30</td>
+          <td>Inizio jam</td>
+        </tr>
+        <tr>
+          <td>10:30</td>
+          <td>Dataset bloccato - nessun cambio dopo questo orario</td>
+        </tr>
+        <tr class="highlight">
+          <td>17:00</td>
+          <td>Submission chiuse - pubblicate il link al repo</td>
+        </tr>
+        <tr>
+          <td>17:15</td>
+          <td>Inizio showcase</td>
+        </tr>
+      </table>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Votazione e Vincitori</div>
+      <p style="margin-bottom: 1rem;">Quando le submission chiudono, ogni team presenta per <strong>15 minuti</strong>, in condivisione schermo, raccontateci cosa avete trovato.</p>
+      <p style="margin-bottom: 1rem;">Tutti votano. I progetti vengono valutati secondo due criteri:</p>
+      <div class="voting-grid">
+        <div class="vote-card">
+          <strong>Topic più interessante</strong>
+          <span>Votano tutti i partecipanti</span>
+        </div>
+        <div class="vote-card">
+          <strong>Visualizzazione più bella</strong>
+          <span>Votano tutti i partecipanti</span>
+        </div>
+      </div>
+      <div class="prize">Il vincitore riceverà <strong>la mia ricetta del Tiramisù</strong>.</div>
+    </section>
+
+    <footer class="jam-footer">Good Luck Have Fun</footer>
+
+  </div>
+</div>
+
+<script>
+  const JAM_START = new Date('2026-05-27T09:30:00');
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    const diff = JAM_START - new Date();
+    if (diff <= 0) {
+      document.getElementById('countdown-screen').style.display = 'none';
+      document.getElementById('jam-content').style.display = 'block';
+      return;
+    }
+    const total = Math.floor(diff / 1000);
+    document.getElementById('cd-h').textContent = pad(Math.floor(total / 3600));
+    document.getElementById('cd-m').textContent = pad(Math.floor((total % 3600) / 60));
+    document.getElementById('cd-s').textContent = pad(total % 60);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+</script>
+
+</body>
+</html>
